@@ -1,3 +1,7 @@
+let btnSwitch = document.getElementById("openDetails");
+btnSwitch.onclick = function (){
+    window.location.href = 'http://127.0.0.1:5500/pages/category-manager.html'
+}
 let modal = document.getElementById("myAddScreen");
 let btn = document.getElementById("openAddBtn");
 let span = document.getElementsByClassName("close")[0];
@@ -32,7 +36,3 @@ deleteModal.onclick = function (event) {
     deleteModal.style.display = "none";
   }
 };
-let btnSwitch = document.getElementById("openDetails");
-btnSwitch.onclick = function (){
-    window.location.href = 'http://127.0.0.1:5500/pages/category-manager.html'
-}
