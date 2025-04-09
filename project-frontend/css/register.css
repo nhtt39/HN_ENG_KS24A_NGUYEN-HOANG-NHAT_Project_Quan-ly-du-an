@@ -1,6 +1,5 @@
 body{
     background-color: #F8FAFC;
-    height: 100vh;
 }
 a{
     text-decoration: none;
@@ -25,32 +24,13 @@ a{
     flex-direction: column;
     align-items: center;
     width: 533px;
-    height: 484px;
+    height: 566px;
     border-radius: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     margin-top: 32px;
 }
-
-.form-container-1{
-    display: flex;
-    flex-direction: column;
-    margin-top: 51px;
-    margin-bottom: 33px;
-}
-
-.form-container-2{
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 63px;
-}
-
-.input-text{
-    font-weight: 400px;
-    font-size: 18px;
-    line-height: 30px;
-}
-
 .input {    
+    margin-top: 25px;
     width: 472px;
     height: 65px;
     text-align: center;
@@ -60,9 +40,8 @@ a{
     font-weight: 400px;
     font-size: 16px;
 }
-.login-btn {
-    margin-top: px;
-    padding: 16px;
+.register-btn {
+    margin-top: 63px;
     width: 472px;
     height: 65px;
     text-align: center;
@@ -82,17 +61,17 @@ a{
     font-size: 14px;
     color: #71717A;
 }
-.register-btn {
+.login-btn {
     font-weight: 600px;
     font-size: 14px;
     line-height: 22px;
     color: #0D6EFD;
 }
 
-.login-btn:hover{
+.register-btn:hover{
     background-color: blue;
 }
-.register-btn:hover{
+.login-btn:hover{
     color: blue;
 }
 
@@ -100,5 +79,8 @@ a{
     font-size: 14px;
     color: red;
     text-align: center;
-    display: none; 
 }
+.hidden{
+    display: none;
+}
+

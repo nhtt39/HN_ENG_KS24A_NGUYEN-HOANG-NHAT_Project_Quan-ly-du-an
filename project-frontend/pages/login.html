@@ -16,20 +16,24 @@
         <form class="form-container" action="">
           <div class="form-container-1">
             <label class="input-text" for="">Email</label>
-            <input class="input" type="email" placeholder="Địa chỉ email" />
-            <p id="email-none" class="error">Email không được để trống</p>
+            <input id="email" class="input" type="email" placeholder="Địa chỉ email" />
+            <p id="email-none" class="error hidden">Email không được để trống</p>
+            <p id="invalid-email" class="error hidden">Email không hợp lệ</p>
+            <p id="email-error" class="error hidden">Email không tồn tại</p>
           </div>
           <div class="form-container-2">
             <label class="input-text" for="">Mật khẩu</label>
-            <input class="input" type="text" placeholder="Mật khẩu" />
-            <p id="password-none" class="error">Mật khẩu không được để trống</p>
+            <input id="password" class="input" type="text" placeholder="Mật khẩu" />
+            <p id="password-none" class="error hidden">Mật khẩu không được để trống</p>
+            <p id="password-error" class="error hidden">Sai mật khẩu</p>
           </div>
-          <input class="login-btn" type="button" value="Đăng nhập" />
+          <input id="login-btn" class="login-btn" type="button" value="Đăng nhập" />
           <span class="text"
             >Bạn chưa có tài khoản? <a class="register-btn" href="./register.html" >Đăng ký</a></span
           >
         </form>
       </main>
     </header>
+    <script src="/js/login.js"></script>
   </body>
 </html>

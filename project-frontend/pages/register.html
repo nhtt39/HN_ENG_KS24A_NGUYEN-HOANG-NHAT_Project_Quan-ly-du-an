@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trang đăng ký</title>
+  </head>
+  <link rel="stylesheet" href="/css/register.css" />
+  <link rel="stylesheet" href="/assets/fonts/font.css" />
+  <link rel="stylesheet" href="/css/reset.css" />
+  <link rel="stylesheet" href="/css/base.css" />
+  <body>
+    <header class="header-container">
+      <h1 class="tittle">Đăng ký</h1>
+      <main class="main-container">
+        <form action="" class="form-container">
+          <input id="fullName" class="input" type="text" placeholder="Họ và tên" />
+          <p id="name-none" class="error hidden">Tên không được để trống</p>
+          <input id="email" class="input" type="email" placeholder="Email" />
+          <p id="invalid-email" class="error hidden">Email không hợp lệ</p>
+          <p id="email-none" class="error hidden">Email không được để trống</p>
+          <p id="exist-email" class="error hidden">Email đã tồn tại</p>
+          <input id="password" class="input" type="text" placeholder="Mật khẩu" />
+          <p id="password-none" class="error hidden">Mật khẩu không được để trống</p>
+          <p id="invalid-password" class="error hidden">Mật khẩu không hợp lệ</p>
+          <input id="confirm-password" class="input" type="text" placeholder="Xác nhận mật khẩu" />
+          <p id="password-check-none" class="error hidden">Xác nhận không được để trống</p>
+          <p id="invalid-cf-password" class="error hidden">Mật khẩu không trùng khớp</p>
+          <input id="button-register" class="register-btn" type="submit" value="Đăng ký" />
+          <span class="text">Đã có tài khoản?<a class="login-btn" href="./login.html">Đăng nhập</a></span>
+        </form>
+      </main>
+    </header>
+    <script src="/js/register.js"></script>
+  </body>
+</html>
