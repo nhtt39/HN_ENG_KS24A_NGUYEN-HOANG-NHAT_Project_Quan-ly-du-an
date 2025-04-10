@@ -41,7 +41,6 @@ document.addEventListener("DOMContentLoaded", function () {
       ];
       localStorage.setItem("users", JSON.stringify(defaultUsers));
 
-      // Khởi tạo dự án mặc định cho tài khoản 1
       const defaultProjects = [
           {
               name: "Dự án mẫu 1",

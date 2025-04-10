@@ -361,3 +361,7 @@ body {
     background-color: #0d6efd;
     width: 95px;
   }
+
+  .hidden{
+    display: none;
+  }

@@ -94,14 +94,14 @@ body {
 
 .box-2 {
   display: flex;
-  flex-direction: row;
+  align-items: center; /* Căn giữa theo chiều dọc */
   justify-content: space-between;
-  align-items: center;
   margin-bottom: 20px;
 }
 
 .box-3 {
   display: flex;
+  align-items: center; /* Căn giữa theo chiều dọc */
   gap: 16px;
 }
 
@@ -309,4 +309,218 @@ select {
 
 .modal-footer .save:hover {
   background-color: blue;
+}
+
+.deleteModal {
+  display: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 50px;
+}
+
+.hr-1 {
+  margin-top: 17.5px;
+  margin-bottom: 37px;
+}
+
+.hr-2 {
+  margin-top: 37px;
+  margin-bottom: 37px;
+}
+
+.closeDeleteModal {
+  position: absolute;
+  align-items: center;
+  right: 15px;
+  font-size: 20px;
+  cursor: pointer;
+  width: 28px;
+  height: 28px;
+}
+
+.deleteModalHeader {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.deleteModalBody {
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.deleteModalFooter {
+  display: flex;
+  justify-content: flex-end;
+  gap: 11px;
+}
+
+.btn-cancelDeleteModal {
+  background-color: #6c757d;
+  color: white;
+  margin-right: 10px;
+}
+
+.btn-cancelDeleteModal:hover {
+  background-color: gray;
+}
+
+.btn-deleteDeleteModal {
+  background-color: #dc3545;
+  color: white;
+}
+
+.btn-deleteDeleteModal:hover {
+  background-color: red;
+}
+
+.error-message {
+  color: red;
+  margin-top: 10px;
+}
+
+.hidden {
+  display: none;
+}
+
+.member-list {
+  display: none; 
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* CSS cho modal danh sách thành viên */
+.memberListModal {
+  display: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+}
+
+.memberListModal .modal-content {
+  width: 600px;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.modal-header-member-list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-header-member-list h3 {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.closeMemberListModal {
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.modal-body-member-list {
+  margin: 10px 0;
+}
+
+.member-list-header {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  padding: 10px 0;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.member-list-title {
+  width: 50%;
+}
+
+.member-list-role {
+  width: 30%;
+}
+
+.member-list-actions {
+  width: 20%;
+  text-align: center;
+}
+
+.member-list-content {
+  margin-top: 10px;
+}
+
+.member-item {
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.member-info {
+  display: flex;
+  align-items: center;
+  width: 50%;
+}
+
+.member-info .badge {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  margin-right: 10px;
+}
+
+.member-info span {
+  font-size: 14px;
+  color: #333;
+}
+
+.member-role {
+  width: 30%;
+  font-size: 14px;
+  color: #6c757d;
+}
+
+.member-actions {
+  width: 20%;
+  text-align: center;
+}
+
+.modal-footer-member-list {
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn-add-member {
+  background-color: #0d6efd;
+  color: white;
+}
+
+.btn-add-member:hover {
+  background-color: #0056b3;
+}
+
+.btn-close-member-list {
+  background-color: #6c757d;
+  color: white;
+}
+
+.btn-close-member-list:hover {
+  background-color: #5a6268;
 }

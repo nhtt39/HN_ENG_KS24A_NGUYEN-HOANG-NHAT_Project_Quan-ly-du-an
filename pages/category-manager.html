@@ -18,7 +18,7 @@
       <h4>Quản Lý Dự Án</h4>
       <nav>
         <a href="./dashboard.html">Dự Án</a>
-        <a href="">Nhiệm vụ của tôi</a>
+        <a href="./product-manager.html">Nhiệm vụ của tôi</a>
         <a href="./login.html" class="logout">Đăng Xuất</a>
       </nav>
     </div>
@@ -59,14 +59,15 @@
       <div class="box-2">
         <button class="btn btn-primary" id="openAddModal">+ Thêm nhiệm vụ</button>
         <div class="box-3">
-          <select class="form-select w-auto">
-            <option selected>Sắp xếp theo</option>
-            <option value="1">Ưu tiên</option>
-            <option value="2">Hạn chót</option>
+          <select class="form-select w-auto" id="sort-tasks">
+            <option value="" selected>Sắp xếp theo</option>
+            <option value="priority">Ưu tiên</option>
+            <option value="dueDate">Hạn chót</option>
           </select>
           <input
             type="text"
             class="form-control"
+            id="search-tasks"
             placeholder="Tìm kiếm nhiệm vụ"
           />
         </div>
@@ -156,49 +157,65 @@
       &copy; 2025 Quản Lý Dự Án Nhóm. All rights reserved.
     </div>
 
+    <!-- Modal thêm/sửa nhiệm vụ -->
     <div id="myAddScreen" class="modal">
       <div class="modal-content">
-        <div class="modal-add-header">
-          <h2>Thêm/sửa nhiệm vụ</h2>
-          <span class="close">&times;</span>
-        </div>
-        <hr>
-        <label for="task-name">Tên nhiệm vụ</label>
-        <input type="text" id="task-name" value="Soạn thảo đề cương dự án">
-        
-        <label for="assignee">Người phụ trách</label>
-        <select id="assignee">
-          <option selected disabled>Chọn người phụ trách</option>
-        </select>
-        
-        <label for="status">Trạng thái</label>
-        <select id="status">
-          <option selected disabled>Chọn trạng thái nhiệm vụ</option>
-        </select>
-        
-        <label for="start-date">Ngày bắt đầu</label>
-        <input type="date" id="start-date">
-        
-        <label for="due-date">Hạn cuối</label>
-        <input type="date" id="due-date">
-        
-        <label for="priority">Độ ưu tiên</label>
-        <select id="priority">
-          <option selected disabled>Chọn độ ưu tiên</option>
-        </select>
-        
-        <label for="progress">Tiến độ</label>
-        <select id="progress">
-          <option selected disabled>Chọn tiến độ</option>
-        </select>
-        <hr>
-
-        <div class="buttons">
-          <button class="cancel">Hủy</button>
-          <button class="save">Lưu</button>
-        </div>
+          <div class="modal-add-header">
+              <h2>Thêm/sửa nhiệm vụ</h2>
+              <span class="close">&times;</span>
+          </div>
+          <hr>
+          <label for="task-name">Tên nhiệm vụ</label>
+          <input type="text" id="task-name" value="">
+          
+          <label for="assignee">Người phụ trách</label>
+          <select id="assignee">
+              <option value="" disabled selected>Chọn người phụ trách</option>
+              <option value="An Nguyễn">An Nguyễn</option>
+              <option value="Bách Nguyễn">Bách Nguyễn</option>
+          </select>
+          
+          <label for="status">Trạng thái</label>
+          <select id="status">
+              <option value="" disabled selected>Chọn trạng thái nhiệm vụ</option>
+              <option value="To do">To do</option>
+              <option value="In Progress">In Progress</option>
+              <option value="Pending">Pending</option>
+              <option value="Done">Done</option>
+          </select>
+          
+          <label for="start-date">Ngày bắt đầu</label>
+          <input type="date" id="start-date">
+          
+          <label for="due-date">Hạn cuối</label>
+          <input type="date" id="due-date">
+          
+          <label for="priority">Độ ưu tiên</label>
+          <select id="priority">
+              <option value="" disabled selected>Chọn độ ưu tiên</option>
+              <option value="Thấp">Thấp</option>
+              <option value="Trung bình">Trung bình</option>
+              <option value="Cao">Cao</option>
+          </select>
+          
+          <label for="progress">Tiến độ</label>
+          <select id="progress">
+              <option value="" disabled selected>Chọn tiến độ</option>
+              <option value="Đúng tiến độ">Đúng tiến độ</option>
+              <option value="Có rủi ro">Có rủi ro</option>
+              <option value="Trễ hạn">Trễ hạn</option>
+          </select>
+          <p class="error-message hidden"></p>
+          <hr>
+  
+          <div class="buttons">
+              <button class="cancel">Hủy</button>
+              <button class="save">Lưu</button>
+          </div>
       </div>
     </div>
+
+    <!-- Modal thêm thành viên -->
     <div id="myAddMemberScreen" class="addMemberModal">
       <div class="modal-content">
         <div class="modal-header">
@@ -208,17 +225,93 @@
         <hr>
         <div class="modal-content-add-member">
           <label for="email">Email</label>
-          <input type="email" id="email" value="nguyenquangan318@gmail.com">
+          <input type="email" id="email" value="">
           <label class="role-label" for="role">Vai trò</label>
           <input type="text" id="role">
         </div>
+        <p class="error-message hidden"></p>
         <hr>
         <div class="modal-footer">
-          <button class="cancel">Huỷ</button>
+          <button class="cancel">Hủy</button>
           <button class="save">Lưu</button>
         </div>
       </div>
     </div>
+
+    <!-- Modal xác nhận xóa nhiệm vụ -->
+    <div id="myDeleteModal" class="deleteModal">
+      <div class="modal-content">
+        <div class="deleteModalHeader">
+          <h3>Xác nhận xóa</h3> 
+          <span class="closeDeleteModal">&times;</span>
+        </div>
+        <hr class="hr-1">
+        <div class="deleteModalBody">
+          Bạn chắc chắn muốn xóa nhiệm vụ này?
+        </div>
+        <hr class="hr-2">
+        <div class="deleteModalFooter">
+          <button class="btn btn-cancelDeleteModal">Hủy</button>
+          <button class="btn btn-deleteDeleteModal">Xóa</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal danh sách thành viên (khi nhấn nút "...") -->
+    <div id="memberListModal" class="memberListModal">
+      <div class="modal-content">
+        <div class="modal-header-member-list">
+          <h3>Danh sách thành viên</h3>
+          <span class="closeMemberListModal">&times;</span>
+        </div>
+        <hr>
+        <div class="modal-body-member-list">
+          <div class="member-list-header">
+            <span class="member-list-title">Thành viên</span>
+            <span class="member-list-role">Vai trò</span>
+            <span class="member-list-actions">Hành động</span>
+          </div>
+          <div class="member-list-content">
+            <div class="member-item">
+              <div class="member-info">
+                <div class="badge bg-primary rounded-circle p-2">AN</div>
+                <span>An Nguyễn<br />annguyen@gmail.com</span>
+              </div>
+              <span class="member-role">Project owner</span>
+              <div class="member-actions">
+                <button class="btn btn-danger btn-sm delete-member">Xóa</button>
+              </div>
+            </div>
+            <div class="member-item">
+              <div class="member-info">
+                <div class="badge bg-secondary rounded-circle p-2">BN</div>
+                <span>Bách Nguyễn<br />bachnguyen@gmail.com</span>
+              </div>
+              <span class="member-role">Frontend Developer</span>
+              <div class="member-actions">
+                <button class="btn btn-danger btn-sm delete-member">Xóa</button>
+              </div>
+            </div>
+            <div class="member-item">
+              <div class="member-info">
+                <div class="badge bg-warning rounded-circle p-2">DN</div>
+                <span>Đức Nguyễn<br />ducnguyen@gmail.com</span>
+              </div>
+              <span class="member-role">Backend Developer</span>
+              <div class="member-actions">
+                <button class="btn btn-danger btn-sm delete-member">Xóa</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr>
+        <div class="modal-footer-member-list">
+          <button class="btn btn-primary btn-add-member">Thêm thành viên</button>
+          <button class="btn btn-secondary btn-close-member-list">Đóng</button>
+        </div>
+      </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/js/category-manager.js"></script>
   </body>

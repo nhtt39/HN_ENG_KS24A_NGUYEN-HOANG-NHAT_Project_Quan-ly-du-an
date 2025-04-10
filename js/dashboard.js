@@ -30,7 +30,7 @@ function closeModal() {
     modal.style.display = "none";
     document.getElementById("project-name").value = "";
     document.getElementById("project-desc").value = "";
-    document.querySelector(".error-message").classList.add("hidden"); // Ẩn lỗi khi đóng modal
+    document.querySelector(".error-message").classList.add("hidden");
     editIndex = null;
 }
 
@@ -38,7 +38,7 @@ function openAddProjectModal() {
     editIndex = null;
     document.getElementById("project-name").value = "";
     document.getElementById("project-desc").value = "";
-    document.querySelector(".error-message").classList.add("hidden"); // Ẩn lỗi khi mở modal
+    document.querySelector(".error-message").classList.add("hidden"); 
     modal.style.display = "flex";
 }
 
@@ -92,49 +92,52 @@ const projectTableBody = document.querySelector("table tbody");
 const saveBtn = document.querySelector(".btn-save");
 const paginationContainer = document.querySelector(".pagination");
 
+
+
 function renderProjects(filteredProjects = null) {
-    const userProjects = getUserProjects();
-    const projectsToRender = filteredProjects || userProjects;
-    const start = (currentPage - 1) * ITEMS_PER_PAGE;
-    const end = start + ITEMS_PER_PAGE;
-    const paginated = projectsToRender.slice(start, end);
+  const userProjects = getUserProjects();
+  const projectsToRender = filteredProjects || userProjects;
+  const start = (currentPage - 1) * ITEMS_PER_PAGE;
+  const end = start + ITEMS_PER_PAGE;
+  const paginated = projectsToRender.slice(start, end);
 
-    projectTableBody.innerHTML = "";
-    paginated.forEach((project, index) => {
-        const realIndex = start + index;
-        const row = document.createElement("tr");
-        row.innerHTML = `
-            <td>${realIndex + 1}</td>
-            <td class="th-1">${project.name}</td>
-            <td>
-                <button class="edit">Sửa</button>
-                <button class="delete">Xóa</button>
-                <button class="details">Chi tiết</button>
-            </td>
-        `;
+  projectTableBody.innerHTML = "";
+  paginated.forEach((project, index) => {
+      const realIndex = start + index;
+      const row = document.createElement("tr");
+      row.innerHTML = `
+          <td>${realIndex + 1}</td>
+          <td class="th-1">${project.name}</td>
+          <td>
+              <button class="edit">Sửa</button>
+              <button class="delete">Xóa</button>
+              <button class="details">Chi tiết</button>
+          </td>
+      `;
 
-        row.querySelector(".delete").onclick = () => {
-            deleteIndex = realIndex;
-            deleteModal.style.display = "flex";
-        };
+      row.querySelector(".delete").onclick = () => {
+          deleteIndex = realIndex;
+          deleteModal.style.display = "flex";
+      };
 
-        row.querySelector(".details").onclick = () => {
-            window.location.href = "./category-manager.html";
-        };
+      row.querySelector(".details").onclick = () => {
+          localStorage.setItem("selectedProject", JSON.stringify(userProjects[realIndex]));
+          window.location.href = "./category-manager.html";
+      };
 
-        row.querySelector(".edit").onclick = () => {
-            editIndex = realIndex;
-            const nameInput = document.getElementById("project-name");
-            const descInput = document.getElementById("project-desc");
-            nameInput.value = project.name;
-            descInput.value = project.desc;
-            modal.style.display = "flex";
-        };
+      row.querySelector(".edit").onclick = () => {
+          editIndex = realIndex;
+          const nameInput = document.getElementById("project-name");
+          const descInput = document.getElementById("project-desc");
+          nameInput.value = project.name;
+          descInput.value = project.desc;
+          modal.style.display = "flex";
+      };
 
-        projectTableBody.appendChild(row);
-    });
+      projectTableBody.appendChild(row);
+  });
 
-    renderPagination(projectsToRender.length);
+  renderPagination(projectsToRender.length);
 }
 
 function renderPagination(totalItems) {
@@ -171,7 +174,6 @@ saveBtn.onclick = () => {
     const name = nameInput.value.trim();
     const desc = descInput.value.trim();
 
-    // Ẩn thông báo lỗi trước khi kiểm tra
     errorMessage.classList.add("hidden");
 
     if (name === "") {
@@ -195,11 +197,12 @@ saveBtn.onclick = () => {
         userProjects[editIndex].desc = desc;
         editIndex = null;
     } else {
-        userProjects.push({
-            name,
-            desc,
-            userId: currentUser.id,
-        });
+      userProjects.push({
+        id: Date.now().toString(),
+        name,
+        desc,
+        userId: currentUser.id,
+    });
     }
 
     updateAllProjects(userProjects);
