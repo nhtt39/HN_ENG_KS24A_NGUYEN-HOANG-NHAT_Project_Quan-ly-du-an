@@ -78,7 +78,7 @@ document.addEventListener("DOMContentLoaded", function () {
         users.push({ fullName, email, password });
         localStorage.setItem("users", JSON.stringify(users));
         alert("Đăng ký thành công!");
-        window.location.href = "http://127.0.0.1:5500/pages/login.html";
+        window.location.href = "/pages/login.html";
       }
     });
   });

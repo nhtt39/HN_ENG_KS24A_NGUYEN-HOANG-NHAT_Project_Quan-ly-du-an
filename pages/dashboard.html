@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trang quản lý dự án</title>
+    <link rel="stylesheet" href="/css/dashboard.css" />
+    <link rel="stylesheet" href="/assets/fonts/font.css" />
+    <link rel="stylesheet" href="/css/reset.css" />
+    <link rel="stylesheet" href="/css/base.css">
+  </head>
+  <body>
+    <div class="header">
+      <h1>Quản Lý Dự Án</h1>
+      <nav>
+        <a href="./dashboard.html">Dự Án</a>
+        <a href="">Nhiệm vụ của tôi</a>
+        <a href="../pages/login.html" class="logout">Đăng Xuất</a>
+      </nav>
+    </div>
+    <div class="container">
+      <div class="project-management">
+        <div class="title-section">
+          <h2>Quản Lý Dự Án Nhóm</h2>
+        </div>
+        <div class="action-bar">
+          <button class="add-btn" id="openAddBtn">+ Thêm Dự Án</button>
+          <input type="text" placeholder=" Tìm kiếm dự án" class="search-bar" />
+        </div>
+        <div class="project-list-title">Danh Sách Dự Án</div>
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th class="th-1">Tên Dự Án</th>
+              <th>Hành Động</th>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+        <div class="pagination">
+          <button class="page-btn active">1</button>
+          <button class="page-btn">2</button>
+          <button class="page-btn">3</button>
+          <button class="page-btn">></button>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <p>&copy; 2025 Team management. All rights reserved.</p>
+    </footer>
+    <div id="myAddScreen" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <div class="modal-header" >
+            <h2>Thêm/sửa dự án</h2>
+        </div>
+        <hr>
+        <div class="input-group">
+            <label for="project-name">Tên dự án</label>
+            <input type="text" id="project-name" placeholder="Xây dựng website thương mại điện tử" class="error">
+            <p class="error-message">Tên danh mục đã tồn tại</p>
+        </div>
+        <div class="input-group">
+            <label for="project-desc">Mô tả dự án</label>
+            <textarea id="project-desc"></textarea>
+        </div>
+        <hr>
+        <div class="form-footer">
+            <button class="btn btn-cancel">Hủy</button>
+            <button class="btn btn-save">Lưu</button>
+        </div>
+      </div>
+    </div>
+    <div id="myDeleteModal" class="deleteModal">
+      <div class="modal-content">
+        <div class="deleteModalHeader">
+          <h3>
+            Xác nhận xoá
+          </h3> 
+          <span class="closeDeleteModal">&times;</span>
+        </div>
+        <hr class="hr-1">
+        <div class="deleteModalBody">
+          Bạn chắc chắn muốn xoá dự án này?
+        </div>
+        <hr class="hr-2">
+      <div class="deleteModalFooter">
+          <button class="btn btn-cancelDeleteModal">Huỷ</button>
+          <button class="btn btn-deleteDeleteModal">Xoá</button>
+      </div>
+      </div>
+    </div>
+    <div id="myFixScreen" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <div class="modal-header" >
+            <h2>Sửa tên dự án</h2>
+        </div>
+        <hr>
+        <div class="input-group">
+            <label for="project-name">Tên dự án</label>
+            <input type="text" id="project-name" placeholder="Xây dựng website thương mại điện tử" class="error">
+            <p class="error-message">Tên danh mục đã tồn tại</p>
+        </div>
+        <hr>
+        <div class="form-footer">
+            <button class="btn btn-cancel">Hủy</button>
+            <button class="btn btn-save">Lưu</button>
+        </div>
+      </div>
+    </div>
+    <script src="/js/dashboard.js"></script>
+    
+  </body>
+</html>

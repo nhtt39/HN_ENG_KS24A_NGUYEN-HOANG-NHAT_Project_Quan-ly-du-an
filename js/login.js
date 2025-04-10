@@ -58,8 +58,10 @@ document.addEventListener("DOMContentLoaded", function () {
   
       if (isValid && user) {
         alert("Đăng nhập thành công!");
-        window.location.href = "./dashboard.html";
+        localStorage.setItem("currentUser", JSON.stringify(user));
+        window.location.href = "/pages/dashboard.html";
       }
+      
     });
   });
   
