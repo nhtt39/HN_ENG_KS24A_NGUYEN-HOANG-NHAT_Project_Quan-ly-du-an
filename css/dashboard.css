@@ -1,6 +1,7 @@
 body {
   background-color: #f4f4f4;
 }
+
 .header {
   background: #212529;
   color: white;
@@ -9,19 +10,23 @@ body {
   justify-content: space-between;
   align-items: center;
 }
+
 .header h1 {
-  font-weight: 400px;
+  font-weight: 400;
   font-size: 19.74px;
 }
+
 .header nav a {
   color: white;
   margin: 0 10px;
   text-decoration: none;
 }
+
 .logout {
-  font-weight: 400px;
+  font-weight: 400;
   color: red;
 }
+
 .container {
   width: calc(100% - 426px);
   margin: auto;
@@ -31,13 +36,16 @@ body {
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
+
 .project-management {
   display: flex;
   flex-direction: column;
 }
+
 .title-section {
   margin-bottom: 10px;
 }
+
 .action-bar {
   display: flex;
   justify-content: space-between;
@@ -46,6 +54,7 @@ body {
   margin-bottom: 15.8px;
   margin-top: 24.2px;
 }
+
 .add-btn {
   background: #0d6efe;
   color: white;
@@ -56,8 +65,9 @@ body {
   width: 150px;
   height: 38px;
   font-size: 15.76px;
-  font-weight: 400px;
+  font-weight: 400;
 }
+
 .search-bar {
   padding: 8px;
   border: 1px solid #ccc;
@@ -65,28 +75,34 @@ body {
   width: 433px;
   height: 38px;
 }
+
 .project-list-title {
   font-size: 18px;
   font-weight: bold;
   margin-bottom: 8px;
 }
+
 table {
   width: 100%;
   border-collapse: collapse;
 }
+
 th,
 td {
   border: 1px solid #ddd;
   padding: 10px;
   text-align: center;
 }
+
 .th-1 {
   text-align: left;
 }
+
 th {
   background: black;
   color: white;
 }
+
 .edit {
   background: #ffc107;
   color: black;
@@ -96,6 +112,7 @@ th {
   width: 61px;
   height: 31px;
 }
+
 .delete {
   background: #dc3545;
   color: white;
@@ -106,6 +123,7 @@ th {
   width: 41px;
   height: 31px;
 }
+
 .details {
   background: #0d63fe;
   color: white;
@@ -115,10 +133,12 @@ th {
   width: 61px;
   height: 31px;
 }
+
 .pagination {
   text-align: center;
   margin-top: 10px;
 }
+
 .pagination button {
   padding: 5px 10px;
   margin: 2px;
@@ -126,22 +146,28 @@ th {
   cursor: pointer;
   background: white;
 }
+
 .pagination .active {
   background: #0d6efe;
   color: white;
 }
+
 .details:hover {
   background-color: blue;
 }
+
 .delete:hover {
   background-color: red;
 }
+
 .edit:hover {
   background-color: orange;
 }
+
 .add-btn:hover {
   background-color: blue;
 }
+
 footer {
   text-align: center;
   margin-top: 20px;
@@ -149,6 +175,7 @@ footer {
   background: #212529;
   color: white;
 }
+
 .modal {
   display: none;
   position: fixed;
@@ -158,8 +185,10 @@ footer {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   justify-content: center;
-  align-items: center;
+  align-items: flex-start; /* Đẩy modal lên trên */
+  padding-top: 50px; /* Khoảng cách từ đỉnh */
 }
+
 .modal-content {
   background: white;
   border-radius: 8px;
@@ -168,11 +197,13 @@ footer {
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   position: relative;
 }
+
 .modal-header {
   display: flex;
   justify-content: space-between;
   padding-bottom: 10px;
 }
+
 .close {
   position: absolute;
   align-items: center;
@@ -182,9 +213,11 @@ footer {
   width: 28px;
   height: 28px;
 }
+
 .input-group {
   margin-top: 15px;
 }
+
 .input-group label {
   display: block;
   font-size: 14px;
@@ -199,29 +232,38 @@ footer {
   border-radius: 5px;
   font-size: 14px;
 }
+
 .error {
   border-radius: 8px;
 }
+
 .modal .modal-content hr {
   margin-top: 13px;
 }
+
 .error-message {
   color: red;
   font-size: 12px;
   margin-top: 5px;
+}
+
+.hidden {
   display: none;
 }
+
 .form-footer {
   display: flex;
   justify-content: flex-end;
   margin-top: 40px;
   gap: 12px;
 }
+
 #project-desc {
   border-radius: 4px;
   padding: 10px 16px;
   height: 80px;
 }
+
 .btn {
   padding: 8px 15px;
   border: none;
@@ -229,21 +271,26 @@ footer {
   cursor: pointer;
   font-size: 14px;
 }
+
 .btn-cancel {
   background: #6c757d;
   margin-right: 10px;
   color: white;
 }
+
 .btn-cancel:hover {
   background-color: gray;
 }
+
 .btn-save {
   background: #007bff;
   color: white;
 }
+
 .btn-save:hover {
   background-color: blue;
 }
+
 .deleteModal {
   display: none;
   position: fixed;
@@ -253,16 +300,20 @@ footer {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   justify-content: center;
-  align-items: center;
+  align-items: flex-start; /* Đổi từ 'center' thành 'flex-start' để đẩy modal lên trên */
+  padding-top: 50px; /* Thêm padding-top để tạo khoảng cách từ đỉnh */
 }
-.hr-1{
-    margin-top: 17.5px;
-    margin-bottom: 37px;
+
+.hr-1 {
+  margin-top: 17.5px;
+  margin-bottom: 37px;
 }
-.hr-2{
-    margin-top: 37px;
-    margin-bottom: 37px;
+
+.hr-2 {
+  margin-top: 37px;
+  margin-bottom: 37px;
 }
+
 .closeDeleteModal {
   position: absolute;
   align-items: center;
@@ -272,6 +323,7 @@ footer {
   width: 28px;
   height: 28px;
 }
+
 .deleteModalHeader {
   font-size: 16px;
   font-weight: bold;
@@ -279,10 +331,12 @@ footer {
   display: flex;
   justify-content: space-between;
 }
+
 .deleteModalBody {
   font-size: 14px;
   margin-bottom: 20px;
 }
+
 .deleteModalFooter {
   display: flex;
   justify-content: flex-end;
@@ -294,13 +348,16 @@ footer {
   color: white;
   margin-right: 10px;
 }
-.btn-cancelDeleteModal:hover{
-    background-color: gray;
+
+.btn-cancelDeleteModal:hover {
+  background-color: gray;
 }
+
 .btn-deleteDeleteModal {
   background-color: #dc3545;
   color: white;
 }
-.btn-deleteDeleteModal:hover{
-    background-color: red;
+
+.btn-deleteDeleteModal:hover {
+  background-color: red;
 }

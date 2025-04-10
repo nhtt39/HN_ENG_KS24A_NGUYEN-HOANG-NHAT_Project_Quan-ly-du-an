@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nhiệm vụ cá nhân</title>
+    <link rel="stylesheet" href="/css/product-manager.css" />
+    <link rel="stylesheet" href="/css/base.css" />
+    <link rel="stylesheet" href="/css/reset.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <h2 class="header-title">Quản lý dự án</h2>
+        <ul class="nav-links">
+          <li><a id="l-projects" href="./dashboard.html">Dự án</a></li>
+          <li><a id="l-mission" href="./product-manager.html">Nhiệm vụ của tôi</a></li>
+          <li><a id="l-log-out" href="./login.html">Đăng xuất</a></li>
+        </ul>
+      </header>
+      <main class="main">
+        <div class="main-content">
+          <h2>Quản lý nhiệm vụ</h2>
+          <div class="form">
+            <select name="select" id="select">
+              <option value="">Sắp xếp theo</option>
+              <input
+                class="find"
+                type="text"
+                name="find"
+                id="find"
+                placeholder="Tìm kiếm nhiệm vụ"
+              />
+            </select>
+          </div>
+          <div class="table-container">
+            <h2>Danh sách nhiệm vụ</h2>
+            <table class="table">
+              <thead class="thead">
+                <tr>
+                  <th>Tên nhiệm vụ</th>
+                  <th>Độ ưu tiên</th>
+                  <th>Trạng thái</th>
+                  <th>Ngày bắt đầu</th>
+                  <th>Hạn chót</th>
+                  <th>Tiến độ</th>
+                </tr>
+              </thead>
+              <tbody class="tbody">
+                <tr>
+                  <td class="category" colspan="6">
+                    <div class="category-content">
+                      <span class="triangle-down"></span>
+                      Xây dựng website thương mại điện tử
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Soạn thảo đề cương dự án</td>
+                  <td class="priority"><span class="pr-l">Thấp</span></td>
+                  <td class="status">
+                    In progress<i class="fa-solid fa-pen-to-square"></i>
+                  </td>
+                  <td class="date">02-24</td>
+                  <td class="date">02-27</td>
+                  <td class="progress">
+                    <span class="prg-t">Đúng tiến độ</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Soạn thảo đề cương dự án</td>
+                  <td class="priority"><span class="pr-m">Trung bình</span></td>
+                  <td class="status">
+                    In progress<i class="fa-solid fa-pen-to-square"></i>
+                  </td>
+                  <td class="date">02-24</td>
+                  <td class="date">02-27</td>
+                  <td class="progress"><span class="prg-r">Có rủi ro</span></td>
+                </tr>
+                <tr>
+                  <td>Soạn thảo đề cương dự án</td>
+                  <td class="priority"><span class="pr-h">Cao</span></td>
+                  <td class="status">
+                    In progress<i class="fa-solid fa-pen-to-square"></i>
+                  </td>
+                  <td class="date">02-24</td>
+                  <td class="date">02-27</td>
+                  <td class="progress"><span class="prg-f">Trễ hạn</span></td>
+                </tr>
+                <tr>
+                  <td class="category" colspan="6">
+                    <div class="category-content">
+                      <span class="triangle-down"></span>
+                      Phát triển ứng dụng di động
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Lên lịch họp kickoff</td>
+                  <td class="priority"><span class="pr-l">Thấp</span></td>
+                  <td class="status">
+                    In progress<i class="fa-solid fa-pen-to-square"></i>
+                  </td>
+
+                  <td class="date">02-24</td>
+                  <td class="date">02-27</td>
+                  <td class="progress"><span class="prg-r">Có rủi ro</span></td>
+                </tr>
+                <tr>
+                  <td class="category" colspan="6">
+                    <div class="category-content">
+                      <span class="triangle-down"></span>
+                      Quản lý dữ liệu khách hàng
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </main>
+      <footer class="footer">
+        <p>&#169;2025 Team management. All rights reserved.</p>
+      </footer>
+    </div>
+    <div class="modal-overlay hidden">
+      <div class="modal">
+        <div class="modal-header">
+          <p>Cập nhật trạng thái</p>
+          <span class="form-close">&#215;</span>
+        </div>
+        <div class="modal-body">
+          <p>Xác nhận cập nhật trạng thái nhiệm vụ</p>
+        </div>
+        <div class="modal-footer">
+          <div class="button-container">
+            <button class="btn-cancel">Hủy</button>
+            <button class="btn-save">Xác nhận</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="/js/product-manager.js"></script>
+  </body>
+</html>

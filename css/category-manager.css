@@ -1,6 +1,7 @@
 body {
   background-color: #f8f9fa;
 }
+
 .header {
   background: #212529;
   color: white;
@@ -9,60 +10,133 @@ body {
   justify-content: space-between;
   align-items: center;
 }
+
 .header nav a {
   color: white;
   margin: 0 10px;
   text-decoration: none;
 }
+
 .box-1 {
   display: flex;
   justify-content: space-between;
-}
-.box-2 {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-.box-3 {
-  display: flex;
-  gap: 16px;
-}
-.form-control {
-  width: 220px;
-  height: 38px;
-}
-.task-container {
   background: #fff;
   border-radius: 8px;
   padding: 20px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
 }
-.badge-priority {
-  width: 80px;
+
+.box-1 h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
 }
-.badge-status {
-  cursor: pointer;
+
+.box-1 p {
+  color: #6c757d;
+  font-size: 14px;
 }
+
+.members-section {
+  display: flex;
+  margin-top: 20px;
+}
+
+.members-section h5 {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
 .member-list {
   display: flex;
   gap: 15px;
 }
+
 .member {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
 }
+
+.member .badge {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
 .member span {
   font-size: 12px;
   color: #6c757d;
+  line-height: 1.4;
 }
+
+.btn-options {
+  background: none;
+  border: none;
+  font-size: 20px;
+  color: #6c757d;
+  cursor: pointer;
+  padding: 5px 10px;
+}
+
+.btn-options:hover {
+  color: #333;
+}
+
+.btn-options .dots {
+  font-weight: bold;
+}
+
+.box-2 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.box-3 {
+  display: flex;
+  gap: 16px;
+}
+
+.form-control {
+  width: 220px;
+  height: 38px;
+}
+
+.task-container {
+  background: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.task-container h2 {
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+
+.badge-priority {
+  width: 80px;
+}
+
+.badge-status {
+  cursor: pointer;
+}
+
 .footer {
   background-color: #212529;
   color: white;
   padding: 10px;
   text-align: center;
 }
+
 .modal {
   display: none;
   position: fixed;
@@ -74,6 +148,7 @@ body {
   justify-content: center;
   align-items: center;
 }
+
 .modal-content {
   background: white;
   border-radius: 8px;
@@ -82,14 +157,17 @@ body {
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   position: relative;
 }
+
 .modal-add-header {
   display: flex;
   justify-content: space-between;
   text-align: center;
 }
+
 .modal h2 {
   margin-bottom: 10px;
 }
+
 .close {
   position: absolute;
   align-items: center;
@@ -100,10 +178,12 @@ body {
   height: 28px;
   top: 25px;
 }
+
 .modal label {
   display: block;
   margin-top: 10px;
 }
+
 .modal input,
 select {
   width: 100%;
@@ -119,6 +199,7 @@ select {
   margin-top: 30px;
   gap: 23px;
 }
+
 .cancel {
   background: #6c757d;
   color: white;
@@ -129,6 +210,7 @@ select {
   border-radius: 8px;
   text-align: center;
 }
+
 .save {
   background: #0d6dfe;
   color: white;
@@ -139,12 +221,15 @@ select {
   border-radius: 8px;
   text-align: center;
 }
-.cancel:hover{
-    background-color: gray;
+
+.cancel:hover {
+  background-color: gray;
 }
-.save:hover{
-    background-color: blue;
+
+.save:hover {
+  background-color: blue;
 }
+
 .addMemberModal {
   display: none;
   position: fixed;
@@ -162,10 +247,12 @@ select {
   justify-content: space-between;
   font-size: 16px;
 }
+
 .modal-header h3 {
-  font-weight: 500px;
+  font-weight: 500;
   font-size: 23.3px;
 }
+
 .closeMemberModal {
   position: absolute;
   align-items: center;
@@ -179,9 +266,11 @@ select {
 .modal-content-add-member label {
   display: block;
 }
+
 .modal-content-add-member .role-label {
   margin-top: 29px;
 }
+
 .modal-content-add-member input {
   width: 100%;
   padding: 8px;
@@ -195,6 +284,7 @@ select {
   margin-top: 27px;
   gap: 23px;
 }
+
 .modal-footer .cancel {
   background: #6c757d;
   color: white;
@@ -203,6 +293,7 @@ select {
   height: 37px;
   border-radius: 8px;
 }
+
 .modal-footer .save {
   background: #0d6dfe;
   color: white;
@@ -212,9 +303,10 @@ select {
   border-radius: 8px;
 }
 
-.modal-footer .cancel:hover{
-    background-color: gray;
+.modal-footer .cancel:hover {
+  background-color: gray;
 }
-.modal-footer .save:hover{
-    background-color: blue;
+
+.modal-footer .save:hover {
+  background-color: blue;
 }
