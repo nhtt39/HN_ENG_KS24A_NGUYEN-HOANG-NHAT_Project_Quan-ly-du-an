@@ -69,6 +69,7 @@ let closeMemberListBtn = document.querySelector(".btn-close-member-list");
 
 const optionsBtn = document.querySelector(".btn-options");
 optionsBtn.onclick = function () {
+    renderMembers();
     memberListModal.style.display = "flex";
 };
 
@@ -126,9 +127,122 @@ deleteModal.onclick = function (event) {
 };
 
 let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+let members = JSON.parse(localStorage.getItem("members")) || [];
 let editTaskIndex = null;
 let currentSort = "";
 let currentSearch = "";
+
+function getProjectMembers() {
+    return members.filter(member => member.projectId === selectedProject?.id);
+}
+
+function updateAllMembers(newMembers) {
+    const otherMembers = members.filter(member => member.projectId !== selectedProject?.id);
+    members = [...otherMembers, ...newMembers];
+    localStorage.setItem("members", JSON.stringify(members));
+}
+
+function renderMembers() {
+    const projectMembers = getProjectMembers();
+    
+    const memberList = document.querySelector(".member-list");
+    memberList.innerHTML = "";
+    projectMembers.forEach(member => {
+        const initials = member.name.split(" ").map(n => n[0]).join("").toUpperCase();
+        memberList.innerHTML += `
+            <div class="member me-3">
+                <div class="badge bg-${member.role === "Project owner" ? "primary" : member.role === "Frontend Developer" ? "secondary" : "warning"} rounded-circle p-3">${initials}</div>
+                <span>${member.name}<br />${member.role}</span>
+            </div>
+        `;
+    });
+
+    const memberListContent = document.querySelector(".modal-body-member-list .member-list-content");
+    memberListContent.innerHTML = "";
+    projectMembers.forEach(member => {
+        const initials = member.name.split(" ").map(n => n[0]).join("").toUpperCase();
+        memberListContent.innerHTML += `
+            <div class="member-item">
+                <div class="member-info">
+                    <div class="badge bg-${member.role === "Project owner" ? "primary" : member.role === "Frontend Developer" ? "secondary" : "warning"} rounded-circle p-2">${initials}</div>
+                    <span>${member.name}<br /><a href="mailto:${member.email}">${member.email}</a></span>
+                </div>
+                <span class="member-role">${member.role}</span>
+                <div class="member-actions">
+                    <button class="btn btn-danger btn-sm delete-member" data-id="${member.id}">Xóa</button>
+                </div>
+            </div>
+        `;
+    });
+
+    document.querySelectorAll(".delete-member").forEach(btn => {
+        btn.onclick = function () {
+            const memberId = btn.getAttribute("data-id");
+            const projectMembers = getProjectMembers();
+            const newMembers = projectMembers.filter(member => member.id !== memberId);
+            updateAllMembers(newMembers);
+            renderMembers();
+            updateAssigneeDropdown();
+        };
+    });
+}
+
+const addMemberSaveBtn = document.querySelector("#myAddMemberScreen .save");
+addMemberSaveBtn.onclick = () => {
+    const emailInput = document.getElementById("email");
+    const roleInput = document.getElementById("role");
+    const errorMessage = document.querySelector("#myAddMemberScreen .error-message");
+    
+    const email = emailInput.value.trim();
+    const role = roleInput.value.trim();
+    const name = email.split("@")[0]; 
+
+    errorMessage.classList.add("hidden");
+
+    if (!email || !role) {
+        errorMessage.textContent = "Email và vai trò không được để trống.";
+        errorMessage.classList.remove("hidden");
+        return;
+    }
+
+    if (!/\S+@\S+\.\S+/.test(email)) {
+        errorMessage.textContent = "Email không hợp lệ.";
+        errorMessage.classList.remove("hidden");
+        return;
+    }
+
+    const projectMembers = getProjectMembers();
+    if (projectMembers.some(member => member.email.toLowerCase() === email.toLowerCase())) {
+        errorMessage.textContent = "Email đã tồn tại trong dự án.";
+        errorMessage.classList.remove("hidden");
+        return;
+    }
+
+    const newMember = {
+        id: Date.now().toString(),
+        name,
+        email,
+        role,
+        projectId: selectedProject?.id
+    };
+
+    projectMembers.push(newMember);
+    updateAllMembers(projectMembers);
+    renderMembers();
+    updateAssigneeDropdown();
+    addMemberModal.style.display = "none";
+    emailInput.value = "";
+    roleInput.value = "";
+};
+
+function updateAssigneeDropdown() {
+    const assigneeSelect = document.getElementById("assignee");
+    const projectMembers = getProjectMembers();
+    assigneeSelect.innerHTML = '<option value="" disabled selected>Chọn người phụ trách</option>';
+    projectMembers.forEach(member => {
+        assigneeSelect.innerHTML += `<option value="${member.name}">${member.name}</option>`;
+    });
+}
 
 function getProjectTasks() {
     let filteredTasks = tasks.filter(task => task.projectId === selectedProject?.id);
@@ -215,6 +329,7 @@ function openAddTaskModal() {
     document.getElementById("progress").value = "";
     const errorMessage = document.querySelector(".modal-content .error-message");
     if (errorMessage) errorMessage.classList.add("hidden");
+    updateAssigneeDropdown();
     modal.style.display = "flex";
 }
 
@@ -277,6 +392,7 @@ function renderTasks() {
             document.getElementById("due-date").value = task.dueDate;
             document.getElementById("priority").value = task.priority;
             document.getElementById("progress").value = task.progress;
+            updateAssigneeDropdown();
             modal.style.display = "flex";
         };
 
@@ -333,4 +449,5 @@ searchInput.oninput = function () {
 };
 
 displayProjectDetails();
+renderMembers();
 renderTasks();
