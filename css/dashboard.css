@@ -185,8 +185,8 @@ footer {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   justify-content: center;
-  align-items: flex-start; /* Đẩy modal lên trên */
-  padding-top: 50px; /* Khoảng cách từ đỉnh */
+  align-items: flex-start;
+  padding-top: 50px;
 }
 
 .modal-content {
@@ -300,8 +300,8 @@ footer {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   justify-content: center;
-  align-items: flex-start; /* Đổi từ 'center' thành 'flex-start' để đẩy modal lên trên */
-  padding-top: 50px; /* Thêm padding-top để tạo khoảng cách từ đỉnh */
+  align-items: flex-start;
+  padding-top: 50px;
 }
 
 .hr-1 {

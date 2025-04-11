@@ -399,7 +399,6 @@ select {
   text-align: center;
 }
 
-/* CSS cho modal danh sách thành viên */
 .memberListModal {
   display: none;
   position: fixed;
